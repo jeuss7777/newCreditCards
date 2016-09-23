@@ -1,10 +1,11 @@
 package jeusscoder.ccards;
 
-import jeusscoder.ccards.dao.PersonRepository;
+import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class CreditCardsApplication {	
@@ -13,4 +14,5 @@ public class CreditCardsApplication {
 		SpringApplication.run(CreditCardsApplication.class, args);
 		
 	}
+	
 }

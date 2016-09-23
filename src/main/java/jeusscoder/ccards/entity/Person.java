@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.EAGER;
@@ -21,7 +22,7 @@ public class Person {
 	private String name;
 	
 	@OneToMany(cascade = {ALL}, fetch= EAGER, mappedBy = "person")
-	private Set<CreditCard> creditcards = new HashSet<>();
+	private Set<Creditcard> creditcards = new HashSet<>();
 
 	public Long getId() {
 		return id;
@@ -39,11 +40,11 @@ public class Person {
 		this.name = name;
 	}
 
-	public Set<CreditCard> getCreditcards() {
+	public Set<Creditcard> getCreditcards() {
 		return creditcards;
 	}
 
-	public void setCreditcards(Set<CreditCard> creditcards) {
+	public void setCreditcards(Set<Creditcard> creditcards) {
 		this.creditcards = creditcards;
 	}
 
@@ -54,11 +55,11 @@ public class Person {
 	}
 
 	
-	public static Person createPerson(String name, Collection<CreditCard> cards){
+	public static Person createPerson(String name, Collection<Creditcard> cards){
 		Person person = new Person();
 		person.setName(name);
 		
-		for (CreditCard card : cards) {
+		for (Creditcard card : cards) {
 			card.setPerson(person);
 			person.getCreditcards().add(card);
 		}

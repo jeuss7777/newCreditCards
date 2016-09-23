@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import static javax.persistence.CascadeType.ALL;
 
@@ -18,7 +19,7 @@ public class Operation {
 	private BigDecimal amount;
 	
 	@ManyToOne(cascade ={ALL})
-	private CreditCard creditcard;
+	private Creditcard creditcard;
 
 	public Long getId() {
 		return id;
@@ -36,11 +37,11 @@ public class Operation {
 		this.amount = amount;
 	}
 
-	public CreditCard getCreditcard() {
+	public Creditcard getCreditcard() {
 		return creditcard;
 	}
 
-	public void setCreditcard(CreditCard creditcard) {
+	public void setCreditcard(Creditcard creditcard) {
 		this.creditcard = creditcard;
 	}
 

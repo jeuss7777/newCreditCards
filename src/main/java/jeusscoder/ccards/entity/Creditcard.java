@@ -6,14 +6,16 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.EAGER;
 
 @Entity
-public class CreditCard {
+public class Creditcard {
 	
 	@Id
 	@GeneratedValue
@@ -21,6 +23,7 @@ public class CreditCard {
 	private String number;
 	
 	@ManyToOne(cascade ={ALL})
+//	@JoinColumn(name="")
 	private Person person;
 	
 	@OneToMany(cascade = {ALL}, fetch = EAGER, mappedBy = "creditcard")
@@ -64,10 +67,10 @@ public class CreditCard {
 				+ person + ", operations=" + operations + "]";
 	}
 	
-	public static CreditCard createCard(String number) {
-        CreditCard creditCard = new CreditCard();
-        creditCard.setNumber(number);
-        return creditCard;
+	public static Creditcard createCard(String number) {
+		Creditcard creditcard = new Creditcard();
+        creditcard.setNumber(number);
+        return creditcard;
     }
 	
 }

@@ -1,6 +1,6 @@
 package jeusscoder.ccards.dao;
 
-import static jeusscoder.ccards.entity.CreditCard.createCard;
+import static jeusscoder.ccards.entity.Creditcard.createCard;
 import static jeusscoder.ccards.entity.Person.createPerson;
 
 import java.util.Arrays;
@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import jeusscoder.ccards.entity.CreditCard;
+import jeusscoder.ccards.entity.Creditcard;
 import jeusscoder.ccards.dao.PersonRepositoryCustom;
 
 import jeusscoder.ccards.entity.Person;
@@ -22,7 +22,7 @@ public class PersonRepositoryImpl implements PersonRepositoryCustom {
 
     @Override
     public Person createWithCard(String name, String number) {
-        CreditCard creditCard = createCard(number);
+        Creditcard creditCard = createCard(number);
         Person person = createPerson(name, Arrays.asList(creditCard));
         entityManager.persist(person);
         return person;

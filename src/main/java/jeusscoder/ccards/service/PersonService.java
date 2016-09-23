@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import jeusscoder.ccards.dao.PersonRepository;
 import jeusscoder.ccards.dao.PersonRepositoryImpl;
-import jeusscoder.ccards.entity.CreditCard;
+import jeusscoder.ccards.entity.Creditcard;
 import jeusscoder.ccards.entity.Person;
 
 @Service
@@ -18,7 +18,7 @@ public class PersonService {
 		personRepository.save(person);
 	}
 	
-	public void createNewCard (Person person, CreditCard card){
+	public void createNewCard (Person person, Creditcard card){
 		//personRepository.
 	}
 	
