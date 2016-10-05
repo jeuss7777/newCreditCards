@@ -1,10 +1,12 @@
 package jeusscoder.ccards.entity;
 
-import java.util.HashSet;
+//import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,62 +17,104 @@ import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.EAGER;
 
 @Entity
+@Table(name = "creditcard")
 public class Creditcard {
-	
+		
 	@Id
-	@GeneratedValue
-	private Long id;
-	private String number;
+	//@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "creditCardId")
+	private Long creditCardId;
 	
-	@ManyToOne(cascade ={ALL})
-//	@JoinColumn(name="")
-	private Person person;
+	@Column(name = "creditCardNumber")
+	private String creditCardNumber;
 	
-	@OneToMany(cascade = {ALL}, fetch = EAGER, mappedBy = "creditcard")
-	private Set<Operation> operations = new HashSet<>();
+	@Column(name= "creditCardOwnerId")
+	private Long creditCardOwnerId;
+		
+	
+	@ManyToOne(optional=false)
+	@JoinColumn(name="creditCardOwnerId",referencedColumnName="personId", insertable=false, updatable=false)
+	private Person owner;
+	
+	//@OneToMany(cascade = {ALL}, fetch = EAGER, mappedBy = "creditcard")
+	//private Set<Operation> operations = new HashSet<>();
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+	
 
 	public String getNumber() {
-		return number;
+		return creditCardNumber;
+	}
+
+	public Long getCreditCardId() {
+		return creditCardId;
+	}
+
+	public void setCreditCardId(Long creditCardId) {
+		this.creditCardId = creditCardId;
+	}
+
+	public Long getCreditCardOwnerId() {
+		return creditCardOwnerId;
+	}
+
+	public void setCreditCardOwnerId(Long creditCardOwnerId) {
+		this.creditCardOwnerId = creditCardOwnerId;
 	}
 
 	public void setNumber(String number) {
-		this.number = number;
+		this.creditCardNumber = number;
 	}
-
-	public Person getPerson() {
-		return person;
-	}
-
-	public void setPerson(Person person) {
-		this.person = person;
-	}
-
-	public Set<Operation> getOperations() {
-		return operations;
-	}
-
-	public void setOperations(Set<Operation> operations) {
-		this.operations = operations;
-	}
+	
+	
 
 	@Override
 	public String toString() {
+		return "Creditcard [creditCardId=" + creditCardId
+				+ ", creditCardNumber=" + creditCardNumber
+				+ ", creditCardOwnerId=" + creditCardOwnerId + "]";
+	}
+
+	public Person getOwner() {
+		return owner;
+	}
+
+	public void setOwner(Person owner) {
+		this.owner = owner;
+	}
+
+	//public Set<Operation> getOperations() {
+	//	return operations;
+	//}
+
+	//public void setOperations(Set<Operation> operations) {
+	//	this.operations = operations;
+	//}
+
+	/*@Override
+	public String toString() {
 		return "CreditCard [id=" + id + ", number=" + number + ", person="
 				+ person + ", operations=" + operations + "]";
-	}
+	}*/
 	
-	public static Creditcard createCard(String number) {
+	/*@Override
+	public String toString() {
+		return "CreditCard [id=" + cardId + ", number=" + cardNumber + ", person="
+				+ person + "]";
+	}*/
+	
+	
+	
+	/*public static Creditcard createCard(String number) {
 		Creditcard creditcard = new Creditcard();
         creditcard.setNumber(number);
         return creditcard;
-    }
+    }*/
+	
+	/*@Override
+	public String toString() {
+		return "CreditCard [id=" + creditCardOwnerId + ", number=" + creditCardNumber + ", cardOwnerId=" + creditCardOwnerId + "]";
+	}*/
+	
+	
 	
 }

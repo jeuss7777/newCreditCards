@@ -2,6 +2,7 @@ package jeusscoder.ccards.controller;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collection;
 
 import javax.sql.DataSource;
 
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value="/ccard")
+@RequestMapping(value="/user")
 public class PersonController {
 	@Autowired
 	private PersonServ personServ;
@@ -26,9 +27,15 @@ public class PersonController {
         return null;
     }*/
 	
-	@RequestMapping(value = "/cards" ,method = RequestMethod.GET)
+	/*@RequestMapping(value = "/cards" ,method = RequestMethod.GET)
 	public Person findPersonBy(){
 		return personServ.findPersonBy();
+		
+	}*/
+	
+	@RequestMapping(value = "/all" ,method = RequestMethod.GET)
+	public Collection<Person> findAll(){
+		return personServ.findAll();
 		
 	}
 }
